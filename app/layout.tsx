@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { QueryProvider } from "@/api/query-provider";
 
 export const metadata: Metadata = {
   title: "Rappel Conso Enfants",
@@ -12,8 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={"antialiased"}>{children}</body>
-    </html>
+    <QueryProvider>
+      <html lang="en">
+        <body className={"antialiased"}>{children}</body>
+      </html>
+    </QueryProvider>
   );
 }
