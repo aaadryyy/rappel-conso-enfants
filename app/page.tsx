@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div>
       {products?.results?.map((product) => (
-        <div>{product.gtin}</div>
+        <div key={product.gtin}>{product.gtin}</div>
       ))}
     </div>
   );
