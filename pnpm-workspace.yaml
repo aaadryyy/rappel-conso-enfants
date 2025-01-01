@@ -1,0 +1,7 @@
+packages:
+  # ajoute des paquets dans ces dossiers
+  - "apps/**"
+  - "packages/**"
+
+  # optionnel: exclu des dossiers
+  - "!**/test/**"
