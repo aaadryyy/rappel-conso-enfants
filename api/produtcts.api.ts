@@ -1,12 +1,18 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import type { Product } from "@/model/product.model";
+import { transformProductImages } from "@/utils/api.utils";
+import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 
 const productsQueryKeys = {
   list: ["products", "list"],
 };
 
-export const useGetProducts = (): any => {
+type useGetProductsType = {
+  results: Array<Product>;
+  total_count: number;
+};
+export const useGetProducts = (): UseQueryResult<useGetProductsType, Error> => {
   return useQuery({
     queryKey: productsQueryKeys.list, // add filters etc... in the key here
     queryFn: async () => {
@@ -15,5 +21,6 @@ export const useGetProducts = (): any => {
       const data = await fetch(defaultApiPath);
       return await data.json();
     },
+    select: transformProductImages,
   });
 };
